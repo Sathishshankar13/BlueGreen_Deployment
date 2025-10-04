@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: adijaiswal/bankapp:green  # Replace with your Green version image
+        image: sathishshankar13/bankapp:green  # Replace with your Green version image
         env:
         - name: DB_HOST
           value: "mysql"  # MySQL service name

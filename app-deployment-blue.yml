@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: app
+        version: blue
+    spec:
+      containers:
+      - name: app
+        image: adijaiswal/bankapp:blue  # Replace with your Blue version image
+        env:
+        - name: DB_HOST
+          value: "mysql"  # MySQL service name
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "password"
+        - name: DB_NAME
+          value: "test_db"
+        ports:
+        - containerPort: 5000

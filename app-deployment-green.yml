@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+      version: green
+  template:
+    metadata:
+      labels:
+        app: app
+        version: green
+    spec:
+      containers:
+      - name: app
+        image: adijaiswal/bankapp:green  # Replace with your Green version image
+        env:
+        - name: DB_HOST
+          value: "mysql"  # MySQL service name
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "password"
+        - name: DB_NAME
+          value: "test_db"
+        ports:
+        - containerPort: 5000
